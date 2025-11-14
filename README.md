@@ -223,7 +223,7 @@ cp /ableruntime/b54328/.ollama/models/* ~/.ollama/models/.
 │   │   └── sha256-<hash>  # Actual model weights
 └── ...
 
-~/ollama/
+~/oLlama/
 └── bin/
     └── ollama  # Ollama binary
 ```
