@@ -51,7 +51,7 @@ Agentic Lab Academy is a multi-agent research workflow system that uses LLMs to 
 ABLE is an **air-gapped, isolated environment with NO internet access** from login or compute nodes. This means:
 
 - ❌ **Cloud-based LLM backends WILL NOT WORK**: OpenRouter, ALCF Sophia vLLM endpoints, any API-based service requiring internet calls
-- ✅ **ONLY Ollama works**: Local LLM inference deployed on ABLE infrastructure
+- ✅ **ONLY [Ollama](https://ollama.com) works**: Local LLM inference deployed on ABLE infrastructure
 - 🔒 The security design is intentional—air gaps protect sensitive research data
 
 The original agentic_lab_academy framework supports multiple backends (ollama, openrouter, alcf_sophia), but on ABLE, attempting to use anything other than Ollama will fail with:
