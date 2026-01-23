@@ -273,14 +273,6 @@ When the Code Executor Agent runs generated code, it will use this local PyPI mi
 3. Which packages are available in the mirror
 4. Procedures for adding new packages to the mirror
 
-When the Code Executor Agent runs generated code, it will use this local PyPI mirror instead of trying to reach the public PyPI.
-
-**Contact ABLE support to inquire about**:
-1. Whether a local PyPI mirror is available on ABLE
-2. The hostname and port of the local PyPI repository
-3. Which packages are available in the mirror
-4. Procedures for adding new packages to the mirror
-
 For now, **plan for pre-installing all required packages in your conda environment during the setup phase**.
 
 ---
