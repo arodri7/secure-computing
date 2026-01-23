@@ -1,6 +1,6 @@
 # Deploying Agentic Lab Academy on ABLE
 
-This guide provides step-by-step instructions for deploying and running **Agentic Lab Academy** within the ABLE (Advanced Bioinformatics Learning Environment) secure computing environment at Argonne National Laboratory.
+This guide provides step-by-step instructions for deploying and running **[Agentic Lab Academy](https://github.com/tnnandi/agentic_lab_academy)** within the ABLE (Advanced Bioinformatics Learning Environment) secure computing environment at Argonne National Laboratory.
 
 Agentic Lab Academy is a multi-agent research workflow system that uses LLMs to automate scientific discovery tasks: literature review, research planning, code generation, execution, and iterative refinement. **On ABLE, it supports local code execution only—job submission to other HPC systems (Polaris, Aurora, Sophia) is not possible due to ABLE's air-gapped architecture.**
 
@@ -25,7 +25,7 @@ Agentic Lab Academy is a multi-agent research workflow system that uses LLMs to 
 
 ## Overview
 
-**Agentic Lab Academy** is a composable, multi-agent research automation system that:
+**[Agentic Lab Academy](https://github.com/tnnandi/agentic_lab_academy)** is a composable, multi-agent research automation system that:
 
 - Breaks research tasks into coordinated agent workflows (PI Planning, Research, Code Writing, Code Execution, Review, Critique)
 - Generates Python code based on your research objectives
