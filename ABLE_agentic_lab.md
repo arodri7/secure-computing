@@ -277,42 +277,6 @@ For now, **plan for pre-installing all required packages in your conda environme
 
 ---
 
-## Step 5B: Configure Local PyPI (Optional, if available on ABLE)
-
-If your ABLE deployment includes an ABLE-hosted PyPI repository, configure pip to use it on the **login node**:
-
-```bash
-# Create pip configuration to use local PyPI
-mkdir -p ~/.pip
-cat > ~/.pip/pip.conf << 'EOF'
-[global]
-index-url = http://[**ABLE_PYPI_HOSTNAME**]:[**PORT**]/simple/
-# Example: http://pypi-mirror.able.anl.gov:8080/simple/
-EOF
-
-# Verify the configuration
-cat ~/.pip/pip.conf
-
-# Test that the local PyPI is reachable
-pip index versions numpy
-
-# If successful, you should see versions of numpy available from the local mirror
-```
-
-**Advantages of configuring local PyPI**:
-- Code Executor Agent can dynamically install packages during execution
-- Less need to pre-install every dependency up front
-- More flexible for exploratory research workflows
-
-**Contact ABLE support for**:
-- Availability and hostname/port of local PyPI
-- How to request additional packages be added to the mirror
-- Authentication credentials (if required)
-
-If no local PyPI is available, proceed to Step 6 and pre-install all packages in your conda environment.
-
----
-
 ## Step 1: Initial Setup
 
 ### 1A: Connect to ABLE Login Node
@@ -559,7 +523,41 @@ conda deactivate
 
 **This is not configurable.** The air gap between ABLE and the internet is intentional and cannot be bypassed.
 
-### 5B: Verify Ollama is Deployed and Running
+## Step 5B: Configure Local PyPI (Optional, if available on ABLE)
+
+If your ABLE deployment includes an ABLE-hosted PyPI repository, configure pip to use it on the **login node**:
+
+```bash
+# Create pip configuration to use local PyPI
+mkdir -p ~/.pip
+cat > ~/.pip/pip.conf << 'EOF'
+[global]
+index-url = http://[**ABLE_PYPI_HOSTNAME**]:[**PORT**]/simple/
+# Example: http://pypi-mirror.able.anl.gov:8080/simple/
+EOF
+
+# Verify the configuration
+cat ~/.pip/pip.conf
+
+# Test that the local PyPI is reachable
+pip index versions numpy
+
+# If successful, you should see versions of numpy available from the local mirror
+```
+
+**Advantages of configuring local PyPI**:
+- Code Executor Agent can dynamically install packages during execution
+- Less need to pre-install every dependency up front
+- More flexible for exploratory research workflows
+
+**Contact ABLE support for**:
+- Availability and hostname/port of local PyPI
+- How to request additional packages be added to the mirror
+- Authentication credentials (if required)
+
+If no local PyPI is available, proceed to Step 6 and pre-install all packages in your conda environment.
+
+### 5C: Verify Ollama is Deployed and Running
 
 On the **login node**, check that Ollama is accessible:
 
@@ -577,7 +575,7 @@ ps aux | grep ollama
 # If you see a different port, update your code to use that port instead
 ```
 
-### 5C: Review Default Configuration
+### 5D: Review Default Configuration
 
 On the **login node**, examine the framework's config:
 
@@ -600,7 +598,7 @@ LLM_CONFIG = {
 }
 ```
 
-### 5D: Verify Your Model is Available
+### 5E: Verify Your Model is Available
 
 List the models deployed on ABLE's Ollama instance:
 
@@ -625,7 +623,7 @@ curl http://localhost:11434/api/tags | python -m json.tool
 
 Choose a model from this list. If you need a model that's not available, contact ABLE support.
 
-### 5E: Customize LLM Parameters (Optional)
+### 5F: Customize LLM Parameters (Optional)
 
 To adjust temperature or max tokens, you can:
 
