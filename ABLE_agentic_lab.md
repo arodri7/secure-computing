@@ -180,7 +180,7 @@ Before proceeding, understand these **hard architectural constraints**:
 - **HSPD-12 Smart Card**: Configured for SFTP authentication to DTN nodes
 - **Polaris Access** (optional): If transferring data from Polaris system
 - **GitHub Access**: Ability to clone repositories (try runtime node if login node blocks it)
-- **Ollama Access**: Ollama LLM service must be pre-deployed and running on ABLE
+- **Ollama Access**: Ollama LLM service must be pre-deployed and running on ABLE. Take a look [here](https://github.com/arodri7/secure-computing/blob/main/README.md) on how to setup oLlama models within ABLE
 
 ### Local Machine Setup
 
