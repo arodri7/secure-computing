@@ -106,9 +106,9 @@ ABLE is a secure, air-gapped computing environment with distinct node types and 
 
 | Node Type | Internet Access | Purpose | Example Hostname |
 |-----------|-----------------|---------|------------------|
-| **Runtime Nodes** | ✅ Yes | Package installation, downloads, pip/conda operations | `svr-rk1-ableruntime` |
-| **Login Nodes** | ❌ No | Job submission, interactive development, script execution | `svr-rk1-ablelogin` |
-| **Compute Nodes** | ❌ No | Execution of submitted jobs | Various (managed by scheduler) |
+| **Runtime Nodes (Sandbox)** | ✅ Yes | Package installation, downloads, pip/conda operations | `svr-rk1-ableruntime` |
+| **Login Nodes (Air-gapped ABLE)** | ❌ No | Job submission, interactive development, script execution | `svr-rk1-ablelogin` |
+| **Compute Nodes (Air-gapped ABLE)** | ❌ No | Execution of submitted jobs | Various (managed by scheduler) |
 
 ### Why Two-Node Setup Matters
 
