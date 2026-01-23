@@ -180,7 +180,7 @@ Before proceeding, understand these **hard architectural constraints**:
 - **HSPD-12 Smart Card**: Configured for SFTP authentication to DTN nodes
 - **Polaris Access** (optional): If transferring data from Polaris system
 - **GitHub Access**: Ability to clone repositories (try runtime node if login node blocks it)
-- **Ollama Access**: Ollama LLM service must be pre-deployed and running on ABLE. Take a look [here](https://github.com/arodri7/secure-computing/blob/main/README.md) on how to setup oLlama models within ABLE
+- **Ollama Access**: Ollama LLM service must be [pre-deployed and running on ABLE](https://github.com/arodri7/secure-computing/blob/main/README.md)
 
 ### Local Machine Setup
 
@@ -232,7 +232,7 @@ Based on agentic_lab_academy dependencies:
   - `arxiv` (arXiv paper API client)
   - Additional bioinformatics libraries as needed for your use case (scanpy, anndata, etc.)
 
-- **Ollama**: Local LLM inference service (pre-deployed on ABLE or accessed via API)
+- **Ollama**: Local LLM inference service ([pre-deployed on ABLE](https://github.com/arodri7/secure-computing/blob/main/README.md) or accessed via API)
 - **Disk Space**: [**Specify minimum disk space needed for conda environment + workspace outputs**]
 - **Memory**: [**Specify minimum RAM for agents + code execution**]
 
