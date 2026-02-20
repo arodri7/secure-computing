@@ -249,9 +249,9 @@ tar -czf vep_data.tar.gz vep_data/
 
 Launch Firefox from the ABLE sandbox (internet-side) desktop.
 
-**Step 3 — Navigate to Globus File Manager:**
+**Step 3 — Navigate to Globus File Manager and enter with your credentials:**
 ```
-https://app.globus.org/file-manager
+https://globus.org
 ```
 
 **Step 4 — Find the Polaris grand collection:**
