@@ -214,44 +214,94 @@ rm -rf vep_sandbox/
 
 ---
 
-## Section 2: Transfer to ABLE
+## Section 2: Transfer to ABLE via Globus
+
+SFTP from Polaris to ABLE is not available. The transfer is done using **Globus** from within the ABLE sandbox (internet-side) environment via Firefox browser.
 
 ### 2.1 What to Transfer
 
-After builds are complete, the following files need to be transferred to ABLE:
+The following files are built and staged at `/GeomicVar/rodriguez/tools/` on the Polaris grand filesystem:
 
 ```
-/lus/grand/projects/GeomicVar/rodriguez/tools/
-├── parliament2.sif
-├── clara-parabricks.sif
+/GeomicVar/rodriguez/tools/
+├── parliament2.sif          (~2.02 GB)
+├── clara-parabricks.sif     (~2.49 GB)
 ├── vep.sif
-└── vep_data/                  # VEP cache + GRCh38 FASTA (~15-20GB)
-    └── homo_sapiens/
-        └── [version]/
-            └── GRCh38/
+└── vep_data/                # VEP cache + GRCh38 FASTA (~15-20 GB)
 ```
 
-### 2.2 Transfer via SFTP to ABLE Internet Side
+### 2.2 Transfer Workflow (Globus via ABLE Sandbox Firefox)
+
+**Step 1 — Package files as tar.gz on Polaris (optional but recommended for large transfers):**
+```bash
+cd /lus/grand/projects/GeomicVar/rodriguez/tools
+
+# Package individual SIF files if needed
+tar -czf parliament2.sif.tar.gz parliament2.sif
+tar -czf clara-parabricks.sif.tar.gz clara-parabricks.sif
+tar -czf vep.sif.tar.gz vep.sif
+
+# Package VEP data directory
+tar -czf vep_data.tar.gz vep_data/
+```
+
+**Step 2 — Open Firefox in the ABLE sandbox environment**
+
+Launch Firefox from the ABLE sandbox (internet-side) desktop.
+
+**Step 3 — Navigate to Globus File Manager:**
+```
+https://app.globus.org/file-manager
+```
+
+**Step 4 — Find the Polaris grand collection:**
+
+In the **Collection** field, search for:
+```
+alcf#dtn_grand
+```
+
+**Step 5 — Navigate to the tools directory:**
+
+Set the **Path** to:
+```
+/GeomicVar/rodriguez/tools/
+```
+
+**Step 6 — Download files to ABLE:**
+
+Select the **file** you want to transfer (e.g., `clara-parabricks.sif`), then click **Download** from the right-hand panel. The file will download to your home directory on the ABLE sandbox environment.
+
+Repeat for each file:
+- `parliament2.sif`
+- `clara-parabricks.sif`
+- `vep.sif`
+- `vep_data/` (directory not downloadable)
+- `vep_data.tar.gz`
+
+> **Note:** Downloaded files will land in `~/Downloads/` on the ABLE sandbox. Move them to the appropriate working directory after download.
+
+### 2.3 Move Files to Working Directory on ABLE
+
+After downloading, move files from `~/Downloads/` to your working directory:
 
 ```bash
-sftp -i <your_hspd12_key> username@ingress-abledtn.cels.anl.gov
+# If transferred as tar.gz, extract first
+tar -xzf ~/Downloads/parliament2.sif.tar.gz -C /path/on/able/tools/
+tar -xzf ~/Downloads/clara-parabricks.sif.tar.gz -C /path/on/able/tools/
+tar -xzf ~/Downloads/vep.sif.tar.gz -C /path/on/able/tools/
+tar -xzf ~/Downloads/vep_data.tar.gz -C /path/on/able/tools/
+
+# Or if downloaded directly as .sif
+mv ~/Downloads/parliament2.sif /path/on/able/tools/
+mv ~/Downloads/clara-parabricks.sif /path/on/able/tools/
+mv ~/Downloads/vep.sif /path/on/able/tools/
+mv ~/Downloads/vep_data /path/on/able/tools/
 ```
 
-Once connected:
-```bash
-# Create destination directory structure
-mkdir -p /path/on/able/tools
+### 2.4 Transfer to ABLE Secure Side
 
-# Transfer SIF files
-put /lus/grand/projects/GeomicVar/rodriguez/tools/parliament2.sif /path/on/able/tools/
-put /lus/grand/projects/GeomicVar/rodriguez/tools/clara-parabricks.sif /path/on/able/tools/
-put /lus/grand/projects/GeomicVar/rodriguez/tools/vep.sif /path/on/able/tools/
-
-# Transfer VEP data directory (recursive)
-put -r /lus/grand/projects/GeomicVar/rodriguez/tools/vep_data /path/on/able/tools/
-```
-
-> **Authentication:** ABLE uses HSPD12 authentication via PKCS11Provider. Ensure your credentials are active before initiating transfer.
+Once files are staged on the ABLE sandbox (internet side), coordinate with the ABLE administrator to move the `.sif` files and `vep_data/` directory to the secure side where the SLURM compute and GPU nodes can access them.
 
 ---
 
